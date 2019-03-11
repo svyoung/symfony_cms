@@ -1,0 +1,10 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        {{  include('CIRBundle:Reports:menu.html.twig')}}
+        {% if generateparts is defined %}
+            <div style="margin: 0 auto; width: 60px;">{{ form(generateparts) }}</div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,115 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        {{  include('CIRBundle:Reports:menu.html.twig')}}
+
+
+        <h1>Results for search <span class="searchtitle">{{ fromdate|date('m-d-Y') }}</span> to <span class="searchtitle">{{ todate|date('m-d-Y') }}</span></h1>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Total In</a></li>
+                <li><a href="#tabs-2">Total Out</a></li>
+                <li><a href="#tabs-3">Received</a></li>
+                <li><a href="#tabs-4">Shipped</a></li>
+            </ul>
+            <div id="tabs-1"> {# TOTAL IN #}
+                {% if gettotalins is defined %}
+                <table class="tablesorter">
+                    <thead class="theader">
+                    <th>Part</th>
+                    <th>DA</th>
+                    <th>Batch</th>
+                    <th>Total In</th>
+                    </thead>
+                    {% for gettotalin in gettotalins %}
+                        <tr>
+                            <td>{{gettotalin.partno}}</td>
+                            <td>{{gettotalin.dano}}</td>
+                            <td>{{gettotalin.batchno}}</td>
+                            <td>{{gettotalin.totalin}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+            <div id="tabs-2"> {# TOTAL OUT #}
+                {% if gettotalouts is defined %}
+                <table class="tablesorter">
+                    <thead class="theader">
+                    <th>Part</th>
+                    <th>DA</th>
+                    <th>Batch</th>
+                    <th>Total Out</th>
+                    </thead>
+                    {% for gettotalout in gettotalouts %}
+                        <tr>
+                            <td>{{gettotalout.partno}}</td>
+                            <td>{{gettotalout.dano}}</td>
+                            <td>{{gettotalout.batchno}}</td>
+                            <td>{{gettotalout.totalout}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+            <div id="tabs-3"> {# RECEIVED #}
+                {% if getreceived is defined %}
+                <table class="tablesorter">
+                    <thead class="theader">
+                    <th>Part</th>
+                    <th>DA</th>
+                    <th>Batch</th>
+                    <th>Rack</th>
+                    <th>Heat Code</th>
+                    <th>Die Code</th>
+                    <th>Qty In</th>
+                    <th>Date In</th>
+                    </thead>
+                    {% for received in getreceived %}
+                        <tr>
+                            <td>{{received.partno}}</td>
+                            <td>{{received.dano}}</td>
+                            <td>{{received.batchno}}</td>
+                            <td>{{received.rackno}}</td>
+                            <td>{{received.heatcode }}</td>
+                            <td>{{received.diecode }}</td>
+                            <td>{{received.inqty}}</td>
+                            <td>{{received.indate|date('m-d-Y') }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+            <div id="tabs-4"> {# SHIPPED #}
+                {% if getshipped is defined %}
+                <table class="tablesorter">
+                    <thead class="theader">
+                    <th>Part</th>
+                    <th>DA</th>
+                    <th>Batch</th>
+                    <th>Rack</th>
+                    <th>Heat Code</th>
+                    <th>Die Code</th>
+                    <th>Date</th>
+                    <th>BL</th>
+                    </thead>
+                    {% for shipped in getshipped %}
+                        <tr>
+                            <td>{{shipped.partno}}</td>
+                            <td>{{shipped.dano}}</td>
+                            <td>{{shipped.batchno}}</td>
+                            <td>{{shipped.rackno}}</td>
+                            <td>{{ shipped.heatcode }}</td>
+                            <td>{{ shipped.diecode }}</td>
+                            <td>{{ shipped.shipdate|date('m-d-Y') }}</td>
+                            <td>{{shipped.blno}}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

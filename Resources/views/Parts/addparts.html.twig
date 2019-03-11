@@ -1,0 +1,49 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        <div class="inventorysearch">
+            {% if entity is defined %}
+            <h1>DA: <span class="searchtitle">{{ entity.dano }}</span></h1>
+                <table>
+                    <tr>
+                        <td>DA: </td>
+                        <td><input type="text" name="dano" value="{{ entity.dano }}" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Part:</td>
+                        <td><input type="text" name="partno" value="{{ entity.partno }}" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Batch: </td>
+                        <td><input type="text" name="batchno" value="{{ entity.batchno }}" disabled></td>
+                    </tr>
+                </table>
+                <form method="post" action="{{ path('subpart_submitpart', {'id' : entity.id}) }}">
+                    <input type="hidden" name="subid" value="{{ entity.id }}"> <br/>
+                    <label>Rack: </label>
+                    <label class="rackno">from: </label>
+                    <input type="text" name="rackno_first" class="rackno_first">
+                    <label class="rackno">to: </label>
+                    <input type="text" name="rackno_last" class="rackno_last"> <br/>
+                    <label for="heatcode">Heat Code: </label>
+                    <input type="text" name="heatcode"><br/>
+                    <label for="diecode">Die Code: </label>
+                    <input type="text" name="diecode"><br/>
+                    <label for="inqty">Qty In: </label>
+                    <input type="number" name="inqty"> <br/>
+                    <label class="required">Hold</label>
+                    <div id="main_sub_3_onhold">
+                        <input type="radio" name="onhold" required="required" value="1">
+                        <label for="onhold_0" class="required">On Hold</label>
+                        <input type="radio" name="onhold" required="required" value="0">
+                        <label for="onhold_1" class="required">Released</label>
+                    </div>
+                    <button type="submit" name="submit">Submit</button>
+                </form>
+
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,191 @@
+<?php
+
+namespace CIR\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use CIR\Bundle\Entity\InventorySub;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Inventory
+ *
+ * @ORM\Table(name="inventory")
+ * @ORM\Entity(repositoryClass="CIR\Bundle\Entity\InventoryRepository")
+ */
+class Inventory
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="indate", type="date", nullable=false)
+     */
+    private $indate;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dano", type="string", length=50, nullable=false)
+     */
+    private $dano;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="partno", type="string", length=50, nullable=false)
+     */
+    private $partno;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="batchno", type="integer", nullable=false)
+     */
+    private $batchno;
+
+    /**
+     * @var integer
+     * @ORM\OneToMany(targetEntity="InventorySub", mappedBy="main")
+     * @ORM\Column(name="sub", type="integer", nullable=false)
+     */
+    protected $sub;
+
+    public function __construct()
+    {
+        $this->sub = new ArrayCollection();
+    }
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set indate
+     *
+     * @param \DateTime $indate
+     * @return Inventory
+     */
+    public function setIndate($indate)
+    {
+        $this->indate = $indate;
+
+        return $this;
+    }
+
+    /**
+     * Get indate
+     *
+     * @return \DateTime 
+     */
+    public function getIndate()
+    {
+        return $this->indate;
+    }
+
+    /**
+     * Set dano
+     *
+     * @param string $dano
+     * @return Inventory
+     */
+    public function setDano($dano)
+    {
+        $this->dano = $dano;
+
+        return $this;
+    }
+
+    /**
+     * Get dano
+     *
+     * @return string 
+     */
+    public function getDano()
+    {
+        return $this->dano;
+    }
+
+    /**
+     * Set partno
+     *
+     * @param string $partno
+     * @return Inventory
+     */
+    public function setPartno($partno)
+    {
+        $this->partno = $partno;
+
+        return $this;
+    }
+
+    /**
+     * Get partno
+     *
+     * @return string 
+     */
+    public function getPartno()
+    {
+        return $this->partno;
+    }
+
+    /**
+     * Set batchno
+     *
+     * @param integer $batchno
+     * @return Inventory
+     */
+    public function setBatchno($batchno)
+    {
+        $this->batchno = $batchno;
+
+        return $this;
+    }
+
+    /**
+     * Get batchno
+     *
+     * @return integer 
+     */
+    public function getBatchno()
+    {
+        return $this->batchno;
+    }
+
+    /**
+     * Set sub
+     *
+     * @param integer $sub
+     * @return Inventory
+     */
+    public function setSub(Inventorysub $sub)
+    {
+        $this->sub = $sub;
+
+        return $this;
+    }
+
+    /**
+     * Get sub
+     *
+     * @return integer 
+     */
+    public function getSub()
+    {
+        return $this->sub;
+    }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {% block title %}Meiko America - Chicago Inventory Management System{% endblock %}
+        </title>
+
+        <link rel="stylesheet" type="text/css" href='{{asset ('cir_files/style.css')}}'>
+        <link rel="stylesheet" type="text/css" href='{{asset ('cir_files/jqueryui.min.css')}}'>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script type="text/javascript" src='{{ asset ('cir_files/jquery-1.10.2.js') }}'></script>
+        <script type="text/javascript" src='{{ asset ('cir_files/jquery-ui-1.10.4.custom.js') }}'></script>
+        <script type="text/javascript">
+            $(function() {
+                $( "#tabs" ).tabs();
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+                        console.log("You're at the bottom!");
+                    }
+                });
+            })
+        </script>
+
+        <script type="text/javascript">
+            $(window).scroll(function () {
+                if ($(window).scrollTop() >= $(document).height() - $(window).height() - 10) {
+                    console.log("You're at the bottom!");
+                }
+            });
+        </script>
+    </head>
+    <body> 
+
+        <div id="menu">
+            {{ include('CIRBundle:Default:menu.html.twig') }}
+        </div> 
+        <div id="top" class="container" style="padding-top:125px;">
+            {% block menu %} 
+               
+            {% endblock %}
+            <div id="content">
+                {% block body %}{% endblock %}
+            </div>
+
+            <a href="#top" id="toTop">Top</a>
+        </div>
+        {% block javascripts %}
+
+            <script type="text/javascript" src='{{ asset ('cir_files/jquery.stickytableheaders.js') }}'></script>
+            <script src="{{ asset ('cir_files/jquery.tablesorter.js') }}"></script>
+            <script src="{{ asset ('cir_files/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

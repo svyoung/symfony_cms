@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>SumitomoMain list</h1>
+
+    <ul>
+        <li>
+            <a href="{{ path('sumitomomain_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                {#<th>Indate</th>#}
+                <th>Dano</th>
+                <th>Partno</th>
+                <th>Batchno</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('sumitomomain_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                {#<td>{% if entity.indate %}{{ entity.indate|date('Y/m/d') }}{% endif %}</td>#}
+                <td>{{ entity.dano }}</td>
+                <td>{{ entity.partno }}</td>
+                <td>{{ entity.batchno }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('sumitomomain_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('sumitomomain_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% endblock %}

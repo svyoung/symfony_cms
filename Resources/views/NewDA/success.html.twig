@@ -1,0 +1,25 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+       Submit NewDA Success!
+        <table>
+            <tr>
+                <td>DA</td>
+                <td>{{ newda.dano }}</td>
+            </tr>
+            <tr>
+                <td>Part</td>
+                <td>{{ newda.partno }}</td>
+            </tr>
+            <tr>
+                <td>Batch</td>
+                <td>{{ newda.batchno }}</td>
+            </tr>
+            <tr>
+                <td>In Date</td>
+                <td>{{ newda.indate|date('m-d-Y') }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

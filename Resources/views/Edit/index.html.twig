@@ -1,0 +1,16 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+<div id="content-box">
+    <div class="inventorysearch">
+
+        {{ include('CIRBundle:Edit:menu.html.twig') }}
+
+        {% if hello is defined %}{{ hello }} {% endif %}
+
+        {% if shippedform is defined %}
+            {{ form(shippedform) }}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+parameters:
+#    cir.example.class: CIR\Bundle\Example
+
+services:
+#    cir.example:
+#        class: %cir.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

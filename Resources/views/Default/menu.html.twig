@@ -1,0 +1,25 @@
+<div id="header">
+	<div class="banner">
+        {#{% if app.user %}#}
+         {#<ul>#}
+             {#<li>{{ app.user }}</li>#}
+             {#<li><a href="{{ path('logout') }}">Logout</a></li>#}
+         {#</ul>#}
+            {#{% else %}#}
+            {#Please login#}
+        {#{% endif %}#}
+    </div>
+	<nav>
+		<div class="container">
+			<ul class="menu">
+				<li><a href="{{path('cir_home')}}">Home</a></li>
+				<li><a href="{{ path('reports_home') }}">Reports</a></li>
+				<li><a href="{{ path('newda_home') }}">New DA</a></li>
+				<li><a href="{{ path('subpart_home') }}">Sub Part Info</a></li>
+				<li><a href="{{ path('log_home') }}">Shipment Acitivity</a></li>
+				<li><a href="{{ path('edit_home') }}">Edit Menu</a></li>
+				<li class="last"><a href="#">Receiving</a></li>
+			</ul>
+		</div>
+	</nav>
+</div>

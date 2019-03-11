@@ -1,0 +1,73 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        <div class="inventorysearch">
+
+            {{ include('CIRBundle:Edit:menu.html.twig') }}
+                <h1 style="text-align: center">Edit Shipment Activity</h1>
+            {% if shippedform is defined %}
+                {{ form(shippedform) }}
+            {% endif %}
+        </div>
+
+        <div>
+        {% if getshipped is defined %}
+            <table class="tablesorter">
+                <thead>
+                <th>DA</th>
+                <th>Part</th>
+                <th>Batch</th>
+                <th>Heat Code</th>
+                <th>Die Code</th>
+                <th>Qty In</th>
+                <th>Qty Out</th>
+                <th>Action</th>
+                </thead>
+                {% for shipped in getshipped %}
+                    <tr>
+                        <td>{{ shipped.dano }}</td>
+                        <td>{{ shipped.partno }}</td>
+                        <td>{{ shipped.batchno }}</td>
+                        <td>{{ shipped.heatcode }}</td>
+                        <td>{{ shipped.diecode }}</td>
+                        <td>{{ shipped.inqty }}</td>
+                        <td>{{ shipped.qtyshipped }}</td>
+                        <td><a href="{{ path('edit_edit_shipped', { 'logid': shipped.logid }) }}" class="action">Edit</a></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+        </div>
+
+        <div class="inventorysearch">
+            {% if getsub is defined %}
+            <table>
+                <tr>
+                    <td>DA:</td>
+                    <td><input type="text" value="{{ getsub.dano }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>Part:</td>
+                    <td><input type="text" value="{{ getsub.partno }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>Rack:</td>
+                    <td><input type="text" value="{{ getsub.rackno }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>Die Code:</td>
+                    <td><input type="text" value="{{ getsub.diecode }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>Heat Code:</td>
+                    <td><input type="text" value="{{ getsub.heatcode }}" disabled></td>
+                </tr>
+            </table>
+            {% endif %}
+            {% if editshippedform is defined %}
+                    {{ form(editshippedform) }}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,245 @@
+<?php
+
+namespace CIR\Bundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use CIR\Bundle\Entity\Inventory;
+
+/**
+ * Inventorysub
+ *
+ * @ORM\Table(name="inventorysub")
+ * @ORM\Entity
+ */
+class Inventorysub
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="main_id", type="integer", nullable=false)
+     */
+    private $mainId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rackno", type="string", length=255, nullable=false)
+     */
+    private $rackno;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="heatcode", type="string", length=255, nullable=false)
+     */
+    private $heatcode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="diecode", type="string", length=255, nullable=false)
+     */
+    private $diecode;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="inqty", type="integer", nullable=false)
+     */
+    private $inqty;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="onhold", type="boolean", nullable=false)
+     */
+    private $onhold;
+
+    /**
+     * @var integer
+     * @ORM\ManyToOne(targetEntity="Inventory", inversedBy="sub")
+     * @ORM\JoinColumn(name="main_id", referencedColumnName="id")
+     * @ORM\Column(name="main", type="integer", nullable=false)
+     */
+    protected $main;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set mainId
+     *
+     * @param integer $mainId
+     * @return Inventorysub
+     */
+    public function setMainId($mainId)
+    {
+        $this->mainId = $mainId;
+
+        return $this;
+    }
+
+    /**
+     * Get mainId
+     *
+     * @return integer 
+     */
+    public function getMainId()
+    {
+        return $this->mainId;
+    }
+
+    /**
+     * Set rackno
+     *
+     * @param string $rackno
+     * @return Inventorysub
+     */
+    public function setRackno($rackno)
+    {
+        $this->rackno = $rackno;
+
+        return $this;
+    }
+
+    /**
+     * Get rackno
+     *
+     * @return string 
+     */
+    public function getRackno()
+    {
+        return $this->rackno;
+    }
+
+    /**
+     * Set heatcode
+     *
+     * @param string $heatcode
+     * @return Inventorysub
+     */
+    public function setHeatcode($heatcode)
+    {
+        $this->heatcode = $heatcode;
+
+        return $this;
+    }
+
+    /**
+     * Get heatcode
+     *
+     * @return string 
+     */
+    public function getHeatcode()
+    {
+        return $this->heatcode;
+    }
+
+    /**
+     * Set diecode
+     *
+     * @param string $diecode
+     * @return Inventorysub
+     */
+    public function setDiecode($diecode)
+    {
+        $this->diecode = $diecode;
+
+        return $this;
+    }
+
+    /**
+     * Get diecode
+     *
+     * @return string 
+     */
+    public function getDiecode()
+    {
+        return $this->diecode;
+    }
+
+    /**
+     * Set inqty
+     *
+     * @param integer $inqty
+     * @return Inventorysub
+     */
+    public function setInqty($inqty)
+    {
+        $this->inqty = $inqty;
+
+        return $this;
+    }
+
+    /**
+     * Get inqty
+     *
+     * @return integer 
+     */
+    public function getInqty()
+    {
+        return $this->inqty;
+    }
+
+    /**
+     * Set onhold
+     *
+     * @param boolean $onhold
+     * @return Inventorysub
+     */
+    public function setOnhold($onhold)
+    {
+        $this->onhold = $onhold;
+
+        return $this;
+    }
+
+    /**
+     * Get onhold
+     *
+     * @return boolean 
+     */
+    public function getOnhold()
+    {
+        return $this->onhold;
+    }
+
+    /**
+     * Set main
+     *
+     * @param integer $main
+     * @return Inventorysub
+     */
+    public function setMain(Inventory $main)
+    {
+        $this->main = $main;
+
+        return $this;
+    }
+
+    /**
+     * Get main
+     *
+     * @return integer 
+     */
+    public function getMain()
+    {
+        return $this->main;
+    }
+}

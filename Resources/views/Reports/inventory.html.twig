@@ -1,0 +1,13 @@
+<div class="inventorysearch">
+
+    <ul class="inv_choice">
+        <li class="first">Search by:</li>
+        <li><a href="{{ path('reports_home') }}">DA #</a></li>
+        <li><a href="{{ path('reports_parts') }}">Part #</a></li>
+    </ul>
+
+    {% if daform is defined %} {{ form(daform) }} {% endif %}
+    {% if partform is defined %} {{ form(partform) }} {% endif %}
+
+
+</div>

@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href='{{asset ('cir_files/style.css')}}'>
+
+<script language= 'javascript'>
+    function submitform(col, orderval){
+        search.elements["sortby"].value = col;
+        search.submit.click();
+    }
+    function load(dano,partno,rackno, diecode, heatcode, subid,currqty, target, i){
+        target.window.document.forms['dataform'].elements['dano'+i].value = dano;
+        target.window.document.forms['dataform'].elements['partno'+i].value = partno;
+        target.window.document.forms['dataform'].elements['rackno'+i].value = rackno;
+        target.window.document.forms['dataform'].elements['diecode'+i].value = diecode;
+        target.window.document.forms['dataform'].elements['heatcode'+i].value = heatcode;
+        target.window.document.forms['dataform'].elements['subid'+i].value = subid;
+        target.window.document.forms['dataform'].elements['qtyshipped'].value = currqty;
+        target.window.document.forms['dataform'].elements['lastdasearch'].value = dano;
+        window.close();
+    }
+
+
+</script>
+
+
+        {% if form is defined %}
+            {{ form(form) }}
+        {% endif %}
+
+
+
+            <table class="tablesorter">
+                <thead>
+                    <th>DA</th>
+                    <th>Part</th>
+                    <th>Batch</th>
+                    <th>Rack</th>
+                    <th>Die Code</th>
+                    <th>Heat Code</th>
+                    <th>Qty</th>
+                    <th></th>
+                </thead>
+                {% for entity in entities %}
+                <tr>
+                    <td>{{ entity.dano }}</td>
+                    <td>{{ entity.partno }}</td>
+                    <td>{{ entity.batchno }}</td>
+                    <td>{{ entity.rackno }}</td>
+                    <td>{{ entity.diecode }}</td>
+                    <td>{{ entity.heatcode }}</td>
+                    <td>{{ entity.inqty }}</td>
+                    <td><a href="javascript:void(0)" onclick="load({{ entity.dano }},{{ entity.partno }},{{ entity.rackno }},{{ entity.diecode }}, {{ entity.heatcode }},{{ entity.subid }}, {{ entity.inqty }},top.opener, '<?echo $return; ?>')";> Select</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+

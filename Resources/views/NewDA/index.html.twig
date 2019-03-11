@@ -1,0 +1,44 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        <h4 style="text-align: center">Inventory Information</h4>
+
+        <div class="inventorysearch">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+
+        <div>
+            {{ form_label(form.dano) }}
+            {{ form_errors(form.dano) }}
+            {{ form_widget(form.dano) }}
+        </div>
+
+        <div>
+            {{ form_label(form.partno) }}
+            {{ form_errors(form.partno) }}
+            {{ form_widget(form.partno) }}
+        </div>
+
+        <div>
+            {{ form_label(form.batchno) }}
+            {{ form_errors(form.batchno) }}
+            {{ form_widget(form.batchno) }}
+        </div>
+
+        <div>
+            {{ form_label(form.indate) }}
+            {{ form_errors(form.indate) }}
+            {{ form_widget(form.indate) }}
+        </div>
+
+        <div>
+            {{ form_widget(form.Submit) }}
+        </div>
+
+        {{ form_end(form) }}
+
+        <div class="date"></div>
+       </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,4 @@
+#cir_homepage:
+    #pattern:  /
+    #defaults: { _controller: CIRBundle:Default:index }
+

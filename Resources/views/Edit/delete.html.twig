@@ -1,0 +1,25 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        <span style="display: block; margin: 0 auto; text-align: center; font-weight: bold;">Deleted successfuly!</span>
+        <table class="entitysubmit">
+            <tr>
+                <td><strong>DA</strong></td>
+                <td>{{ entity.dano }}</td>
+            </tr>
+            <tr>
+                <td><strong>Part</strong></td>
+                <td>{{ entity.partno }}</td>
+            </tr>
+            <tr>
+                <td><strong>Batch</strong></td>
+                <td>{{ entity.batchno }}</td>
+            </tr>
+            <tr>
+                <td><strong>In Date</strong></td>
+                <td>{{ entity.indate|date('m-d-Y') }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

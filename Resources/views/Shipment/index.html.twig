@@ -1,0 +1,61 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        {% set noofitems = null %}
+        <label for="noofracks">No. of racks?</label>
+        <form name="numberform" method="post">
+            <input type="text" name="noofitems" value="{{ noofitems }}" id="numberform" onchange="myFunc()">
+        </form>
+        <div>
+            <form name="dataform" method="post" action="" id="dataform">
+                <input type="hidden" name="lastdasearch">
+                    <div class="item">
+                        <span>Item  <a href="{{ path('log_searchsub') }}" target="_blank" onclick="return windowpop(this.href, 600, 433)">Search</a>
+        </span>
+                        <input type="hidden" name="subid[]" value="" placeholder="subid"><br/>
+                        <input type="text" name="dano[]" value="" placeholder="dano"><br/>
+                        <input type="text" name="partno[]" value="" placeholder="partno"><br/>
+                        <input type="text" name="rackno[]" value="" placeholder="rackno"><br/>
+                        <input type="text" name="diecode[]" value="" placeholder="diecode"><br/>
+                        <input type="text" name="heatcode[]" value="" placeholder="heatcode"><br/>
+                        <hr />
+                    </div>
+                <input type="date" name="shipdate"><br/>
+                <input type="number" name="qtyshipped"><br/>
+                <input type="text" name="blno"><br/>
+            </form>
+        </div>
+
+        {#SHIPMENT PAGE<br/>#}
+        {#<a href="{{ path('log_searchsub') }}" target="_blank" onclick="return windowpop(this.href, 600, 433)">Search</a>#}
+    {#</div>#}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+
+        function myFunc() {
+            $.ajax({
+                type: "GET",
+                url: location.href,
+                data: { value: + $("#numberform").val() },
+                success: function(response) {
+                    alert(response);
+                }
+            })
+        }
+
+        function windowpop(url, width, height) {
+//            var leftPosition, topPosition;
+////Allow for borders.
+//            leftPosition = (window.screen.width / 2) - ((width / 2) + 10);
+////Allow for title and status bars.
+//            topPosition = (window.screen.height / 2) - ((height / 2) + 50);
+//Open the window.
+            window.open(url, "Window2", "status=no,height=" + height + ",width=" + width + ",resizable=yes, toolbar=no,menubar=no,scrollbars=no,location=no,directories=no");
+        }
+    </script>
+{% endblock %}

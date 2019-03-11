@@ -1,0 +1,40 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        {{  include('CIRBundle:Reports:menu.html.twig')}}
+        <h2><a href="{{ path('reports_home') }}">Reports</a> > Parts </h2>
+
+        {% if getpart is defined %}
+            <h1>Results for Part <span class="searchtitle">{{ getpart.0.partno }}</span></h1>
+
+            <table class="tablesorter">
+                <thead>
+                <th>DA</th>
+                <th>Part</th>
+                <th>Batch</th>
+                <th>Rack</th>
+                <th>Heat Code</th>
+                <th>Die Code</th>
+                <th>Qty In</th>
+                <th>Date In</th>
+                <th>Date Out</th>
+                </thead>
+                {% for getpart in getpart %}
+                    <tr>
+                        <td>{{getpart.dano}}</td>
+                        <td class="highlight">{{getpart.partno}}</td>
+                        <td>{{getpart.batchno}}</td>
+                        <td>{{getpart.rackno}}</td>
+                        <td>{{getpart.heatcode }}</td>
+                        <td>{{getpart.diecode }}</td>
+                        <td>{{getpart.inqty}}</td>
+                        <td>{{getpart.indate|date('m-d-Y') }}</td>
+                        <td>{{getpart.shipdate|date('m-d-Y') }}</td>
+                        {#<td>{{getda.onhold}}</td> #}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

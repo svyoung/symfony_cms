@@ -1,0 +1,33 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+
+        {{ include('CIRBundle:Edit:menu.html.twig') }}
+
+        <div class="center">
+        <h1 style="text-align: center">Edit DA</h1>
+        {% if searchdaform is defined %} {{ form(searchdaform) }} {% endif %}
+        </div>
+
+        {% if dano is defined %}
+            <table class="tablesorter">
+                <thead>
+                <th>DA</th>
+                <th>Part</th>
+                <th>Action</th>
+                </thead>
+                {% for dano in dano %}
+                    <tr>
+                        <td>{{ dano.dano }}</td>
+                        <td>{{ dano.partno  }}</td>
+                        <td><a href="{{ path('edit_edit_da', { 'dano': dano.dano }) }}" class="action">Edit</a> {{ form(delete) }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        {% if editform is defined %} {{ form(editform) }} {% endif %}
+
+    </div>
+{% endblock %}

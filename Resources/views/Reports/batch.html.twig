@@ -1,0 +1,41 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        {{  include('CIRBundle:Reports:menu.html.twig')}}
+        <h2><a href="{{ path('reports_home') }}">Reports</a> > Batch </h2>
+
+        {% if getbatch is defined %}
+            <h1>Results for Batch <span class="searchtitle">{{ getbatch.0.batchno }}</span></h1>
+            {#<span>Row count: </span><span>{{ getbatch is defined ? getbatch|length : 0 }}</span>#}
+            <table class="tablesorter">
+                <thead>
+                    <th>DA</th>
+                    <th>Part</th>
+                    <th>Batch</th>
+                    <th>Rack</th>
+                    <th>Heat Code</th>
+                    <th>Die Code</th>
+                    <th>Qty In</th>
+                    <th>Date In</th>
+                    <th>Date Out</th>
+                </thead>
+                {% for getbatch in getbatch %}
+                    <tr>
+                        <td>{{getbatch.dano}}</td>
+                        <td>{{getbatch.partno}}</td>
+                        <td class="highlight">{{getbatch.batchno}}</td>
+                        <td>{{getbatch.rackno}}</td>
+                        <td>{{getbatch.heatcode }}</td>
+                        <td>{{getbatch.diecode }}</td>
+                        <td>{{getbatch.inqty}}</td>
+                        <td>{{getbatch.indate|date('m-d-Y') }}</td>
+                        <td>{{getbatch.shipdate|date('m-d-Y') }}</td>
+                        {#<td>{{getda.onhold}}</td> #}
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+    </div>
+{% endblock %}

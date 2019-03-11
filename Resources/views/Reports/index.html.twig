@@ -1,0 +1,14 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+
+    {{  include('CIRBundle:Reports:menu.html.twig')}}
+    {{ include('CIRBundle:Reports:inventory.html.twig') }}
+
+        <div class="inventorysearch">
+            {% if datesumform is defined %}{{ form(datesumform) }} {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

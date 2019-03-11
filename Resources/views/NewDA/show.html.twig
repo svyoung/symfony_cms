@@ -1,0 +1,25 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+        <span style="display: block; margin: 0 auto; text-align: center; font-weight: bold;">Submit New DA Success!</span>
+        <table class="entitysubmit">
+            <tr>
+                <td><strong>DA</strong></td>
+                <td>{{ newda.dano }}</td>
+            </tr>
+            <tr>
+                <td><strong>Part</strong></td>
+                <td>{{ newda.partno }}</td>
+            </tr>
+            <tr>
+                <td><strong>Batch</strong></td>
+                <td>{{ newda.batchno }}</td>
+            </tr>
+            <tr>
+                <td><strong>In Date</strong></td>
+                <td>{{ newda.indate|date('m-d-Y') }}</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}

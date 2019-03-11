@@ -1,0 +1,33 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+    {{  include('CIRBundle:Reports:menu.html.twig')}}
+    <h1 style="text-align:center ">On Hold</h1>
+        {% if onhold is defined %}
+            <div style="margin: 0 auto; width: 60px;">{{ form(onhold) }}</div>
+        {% endif %}
+
+        {% if results is defined %}
+            <table class="tablesorter">
+                <thead>
+                    <th>DA</th>
+                    <th>Part</th>
+                    <th>Batch</th>
+                    <th>Rack No</th>
+                </thead>
+                {% for result in results %}
+                <tr>
+                    <td>{{ result.dano }}</td>
+                    <td>{{ result.partno }}</td>
+                    <td>{{ result.batchno }}</td>
+                    <td>{{ result.rackno }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        {% endif %}
+
+    </div>
+
+{% endblock %}

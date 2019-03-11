@@ -1,0 +1,77 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block body %}
+    <div id="content-box">
+
+        {{ include('CIRBundle:Edit:menu.html.twig') }}
+
+        <div class="center">
+        <h1 style="text-align: center">Edit Parts</h1>
+        {% if searchpartsform is defined %} {{ form( searchpartsform) }} {% endif %}
+        </div>
+
+        {% if dano is defined %}
+            <table class="tablesorter">
+                <thead>
+                <th>DA</th>
+                <th>Part</th>
+                <th>Batch</th>
+                <th>Rack</th>
+                <th>Heat Code</th>
+                <th>Die Code</th>
+                <th>Qty In</th>
+                <th>Action</th>
+                </thead>
+                {% for dano in dano %}
+                    <tr>
+                        <td>{{ dano.dano }}</td>
+                        <td>{{ dano.partno  }}</td>
+                        <td>{{ dano.batchno  }}</td>
+                        <td>{{ dano.rackno  }}</td>
+                        <td>{{ dano.heatcode  }}</td>
+                        <td>{{ dano.diecode  }}</td>
+                        <td>{{ dano.inqty  }}</td>
+                        <td><a href="{{ path('edit_edit_parts', { 'dano': dano.dano, 'subid': dano.subid }) }}" class="action">[ Edit ]</a>
+                            <form action="{{ path('edit_deleteparts', {'subid' : dano.subid}) }}" method="post">
+                                <button type="submit" class="action" onclick="return confirm('Are you sure you want to delete?')">[ Delete ]</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+
+        <div class="inventorysearch">
+        {% if editpartentity is defined %}
+            {% if editpartsform is defined %}
+                <table>
+                    <tr>
+                        <td>DA:</td>
+                        <td><input type="text" value="{{ editpartentity.dano }}" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Part:</td>
+                        <td><input type="text" value="{{ editpartentity.partno }}" disabled></td>
+                    </tr>
+                    <tr>
+                        <td>Batch:</td>
+                        <td><input type="text" value="{{ editpartentity.batchno }}" disabled></td>
+                    </tr>
+            </table>
+                {{ form(editpartsform) }}
+            {% endif %}
+        {% endif %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{#{% block javascripts %}#}
+    {#{{ parent() }}#}
+    {#<style>#}
+        {#$("body").on("click", "#delete", function() {#}
+
+        {#})#}
+    {#</style>#}
+{#{% endblock %}#}

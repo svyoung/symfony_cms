@@ -1,0 +1,44 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block title %}CIRBundle:Test:index{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Test:index page</h1>
+
+    {% if entity is defined %}
+    <div class="inventorysearch">
+        <ul>
+            <li>{{ entity.dano }}</li>
+            <li>{{ entity.partno }}</li>
+            <li>{{ entity.batchno }}</li>
+            <li>{{ entity.indate|date('m-d-Y') }}</li>
+        </ul>
+
+
+        <form method="post" action="{{ path('test_submitpart', {'id' : entity.id}) }}">
+            <input type="number" name="subid" value="{{ entity.id }}"> <br/>
+            <label>Rack#</label>
+            <label class="rackno">from: </label>
+            <input type="text" name="rackno_first" class="rackno_first">
+            <label class="rackno">to: </label>
+            <input type="text" name="rackno_last" class="rackno_last"> <br/>
+            <label for="heatcode">Heat Code: </label>
+            <input type="text" name="heatcode"><br/>
+            <label for="diecode">Die Code: </label>
+            <input type="text" name="diecode"><br/>
+            <label for="inqty">Qty In: </label>
+            <input type="number" name="inqty"> <br/>
+            <label class="required">Hold</label>
+            <div id="main_sub_3_onhold">
+                <input type="radio" name="onhold" required="required" value="1">
+                <label for="onhold_0" class="required">On Hold</label>
+                <input type="radio" name="onhold" required="required" value="0">
+                <label for="onhold_1" class="required">Released</label>
+            </div>
+            <button type="submit" name="submit">Submit</button>
+        </form>
+    </div>
+
+    {% endif %}
+
+{% endblock %}

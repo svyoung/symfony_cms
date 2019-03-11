@@ -1,0 +1,15 @@
+{% extends 'CIRBundle:Default:base.html.twig' %}
+
+{% block title %}CIRBundle:Test:index{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Test:index page</h1>
+
+
+    {% if form is defined %}
+        {{ form(form) }}
+    {% endif %}
+
+
+
+{% endblock %}
